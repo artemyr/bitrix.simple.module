@@ -1,0 +1,1 @@
+<?require($_SERVER["DOCUMENT_ROOT"]."/local/modules/affettaseo/admin/affettaseo_managing.php");?>

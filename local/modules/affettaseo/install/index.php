@@ -53,12 +53,19 @@ Class affettaseo extends CModule
 
     function InstallFiles()
     {
-        CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/affettaseo/install/components", $_SERVER["DOCUMENT_ROOT"]."/local/components", true, true);
+        if($_ENV["COMPUTERNAME"]!='BX')
+        {
+            CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/affettaseo/install/admin", $_SERVER["DOCUMENT_ROOT"]."/bitrix/admin", true);
+            CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/affettaseo/install/components", $_SERVER["DOCUMENT_ROOT"]."/local/components", true, true);
+        }
+
         return true;
     }
 
     function UnInstallFiles()
     {
+        DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/affettaseo/install/admin/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/admin");
+
 //        DeleteDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/affettaseo/install/components", $_SERVER["DOCUMENT_ROOT"]."/local/components"); //не рекурсивна
 //        DeleteDirFilesEx($_SERVER["DOCUMENT_ROOT"]."/local/components/affettaseo/");
         return true;
