@@ -69,4 +69,9 @@ class Utils {
 
         return $arResult;
     }
+
+    public static function test($text)
+    {
+        return \CAffettaseo_ext::testAdd2Log($text);
+    }
 }

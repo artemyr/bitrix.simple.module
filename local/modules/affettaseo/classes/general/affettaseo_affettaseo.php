@@ -9,4 +9,17 @@ class CAffettaseo
         $FORM_RIGHT = $APPLICATION->GetGroupRight("affettaseo");
         if ($FORM_RIGHT>="W") return true;
     }
+
+    public static function testAdd2Log($text)
+    {
+        foreach (GetModuleEvents('affettaseo', 'onBeforeAffettaseoTestLog', true) as $arEvent)
+        {
+            ExecuteModuleEventEx($arEvent, array(&$text));
+        }
+
+        return $text;
+
+        define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/log.txt");
+        AddMessage2Log($text, "affettaseo");
+    }
 }
